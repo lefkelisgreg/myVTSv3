@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="https://www.thymeleaf.org.thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header class="masthead mb-auto" th:fragment="vts-header">
+    <div class="timestamp-new">
+        <p style="font-size:14px;" id="timestamp"></p>
+        <script>function updateClock(){var date = new Date();var y = date.getFullYear();var mo = date.getMonth() + 1;var d = date.getDate();var h = date.getHours();var m = date.getMinutes();var s = date.getSeconds();h = (h < 10) ? "0" + h : h;m = (m < 10) ? "0" + m : m;s = (s < 10) ? "0" + s : s;var time = h + ":" + m + ":" + s;var currentDate = d + "/" + mo + "/" + y;document.getElementById("timestamp").innerHTML = currentDate + " | " + time;setTimeout(updateClock,1000);}updateClock();</script></div>
+    <div class="inner">
+        <a href="/" th:href="@{/}" class="float-sm-left"><img src="/image/main-logo.png" alt="VTSlogo" width="100"></a>
+        <nav class="nav nav-masthead justify-content-center float-lg-right">
+            <a sec:authorize="hasRole('SELLER')"class="nav-link" href="/sell" th:href="@{/sell}"><p>Upload your Car</p></a>
+            <a sec:authorize="hasRole('SELLER')"class="nav-link" href="/mycar" th:href="@{/mycar}"><p>My Cars</p></a>
+            <a sec:authorize="hasRole('BUYER')"class="nav-link" href="/notification" th:href="@{/notification}"><p>My Notifications</p></a>
+            <a class="nav-link" href="/offices" th:href="@{/offices}"><p>Offices</p></a>
+            <a sec:authorize="hasRole('ADMIN')"class="nav-link" href="/profile" th:href="@{/profile}"><p>Profiles</p></a>
+            <a sec:authorize="hasRole('ADMIN')"class="nav-link" href="/adminpanel" th:href="@{/adminpanel}"><p>SuperAdmin Panel</p></a>
+            <a sec:authorize="!isAuthenticated()" class="nav-link" href="/login" th:href="@{/login}"><p style="color: white; font-size: 18px;">Login</p></a>
+            <a sec:authorize="isAuthenticated()" id="alert" class="nav-link" href="/logout" th:href="@{/logout}" onclick="alertMsg()"><p style="color: white; font-size: 18px;">Logout</p></a>
+            <a sec:authorize="!isAuthenticated()" class="nav-link" href="/register" th:href="@{/register}"><p style="color: white; font-size: 18px;">Register</p></a>
+        </nav>
+        <script>
+            function alertMsg() {
+                alert("You have been logged out!");
+            }
+        </script>
+    </div>
+</header>
+</body>
+</html>

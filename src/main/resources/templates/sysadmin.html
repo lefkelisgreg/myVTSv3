@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{page_layout/layout}" xmlns:sec="https://www.thymeleaf.org.thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>myCar Page</title>
+</head>
+<body>
+<div layout:fragment="message-body">
+    <h1>myCar Page</h1>
+<br> <h4 sec:authorize="isAuthenticated()">Welcome to Admin Panel. <h5 sec:authentication="name">is Authorized!</h5></h4><br><br>
+
+    <h3>SYSTEM ADMIN PAGE</h3>
+    <br>
+    <p>group id: 39</p>
+</div>
+
+</body>
+</html>
