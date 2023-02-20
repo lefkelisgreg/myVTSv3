@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{page_layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Sell your Car</title>
+</head>
+<body>
+<div layout:fragment="message-body">
+    <h1>Sell Form Page</h1>
+    <br>
+    <form th:action="@{/check}" th:object="${car}" method="post">
+        <div>
+            <label for="brand">ΜΑΡΚΑ:</label>
+            <input type="text" th:field="*{brand}" id="brand" name="brand">
+           <!-- <span th:if="$#fields.hasErrors('brand')" th:errors="*{brand}"></span> -->
+        </div>
+        <div>
+            <label for="model">ΜΟΝΤΕΛΟ:</label>
+            <input type="text" th:field="*{model}" id="model" name="model">
+            <!-- <span th:if="$#fields.hasErrors('model')" th:errors="*{model}"></span> -->
+        </div>
+        <div>
+            <label for="year">ΕΤΟΣ ΚΑΤΑΣΚΕΥΗΣ:</label>
+            <input type="number" th:field="*{year}" id="year" name="year">
+          <!--  <span th:if="$#fields.hasErrors('year')" th:errors="*{year}"></span> -->
+        </div>
+        <div>
+            <label for="vinnumber">ΑΡΙΘΜΟΣ ΠΛΑΙΣΟΥ:</label>
+            <input type="text" th:field="*{vinnumber}" id="vinnumber" name="vinnumber">
+           <!-- <span th:if="$#fields.hasErrors('vinnumber')" th:errors="*{vinnumber}"></span> -->
+        </div>
+        <div>
+            <label for="licensenumber">ΑΡΙΘΜΟΣ ΑΔΕΙΑΣ:</label>
+            <input type="text" th:field="*{licensenumber}" id="licensenumber" name="licensenumber">
+           <!-- <span th:if="$#fields.hasErrors('licensenumber')" th:errors="*{licensenumber}"></span> -->
+        </div>
+        <div>
+            <label for="registernumber">ΑΡΙΘΜΟΣ ΠΙΝΑΚΙΔΑΣ:</label>
+            <input type="text" th:field="*{registernumber}" id="registernumber" name="registernumber">
+          <!--  <span th:if="$#fields.hasErrors('registernumber')" th:errors="*{registernumber}"></span> -->
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Καταχώρηση Οχήματος</button>
+        </div>
+    </form>
+
+    <br>
+</div>
+
+</body>
+</html>

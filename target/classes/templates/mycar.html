@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>myCar Page</title>
+</head>
+<body>
+<div layout:fragment="message-body">
+    <h1>myCar Page</h1>
+        <br>
+    <h3>List for Seller's Cars</h3>
+    <br>
+    <table class="table-striped table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Μάρκα</th>
+            <th scope="col">Μοντέλο</th>
+            <th scope="col">Έτος Κατασκευής</th>
+            <th scope="col">Αριθμός Πλαισίου</th>
+            <th scope="col">Αριθμός Άδειας</th>
+            <th scope="col">Αριθμός Κυκλοφορίας</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${cars}">
+            <td th:text="${car.brand}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.year}"></td>
+            <td th:text="${car.vinnumber}"></td>
+            <td th:text="${car.licensenumber}"></td>
+            <td th:text="${car.registernumber}"></td>
+            <td sec:authorize="hasRole('ADMIN')">
+                <button type="submit" th:id="${car.id}" name="deleteCar">
+                    <i class="remove user icon"></i>Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>group id: 39</p>
+</div>
+
+</body>
+</html>
